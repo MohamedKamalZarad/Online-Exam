@@ -1,0 +1,138 @@
+<section class="px-4 sm:px-6 lg:px-0">
+  <form class="max-w-md mx-auto">
+    <h3 class="text-2xl sm:text-3xl font-inter font-bold text-gray-800 mb-7 text-center sm:text-left">
+      Create Account
+    </h3>
+
+    <!-- First & Last Name -->
+    <div class="mb-5 flex flex-col sm:flex-row sm:space-x-4">
+      <div class="sm:w-1/2 w-full mb-4 sm:mb-0">
+        <label for="first-name" class="block mb-2 text-sm font-semibold text-gray-900">
+          First name
+        </label>
+        <input
+          type="text"
+          id="first-name"
+          class="border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          placeholder="Ahmed"
+        />
+      </div>
+      <div class="sm:w-1/2 w-full">
+        <label for="last-name" class="block mb-2 text-sm font-semibold text-gray-900">
+          Last name
+        </label>
+        <input
+          type="text"
+          id="last-name"
+          class="border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          placeholder="Abdullah"
+        />
+      </div>
+    </div>
+
+    <!-- Username -->
+    <div class="mb-5">
+      <label for="username" class="block mb-2 text-sm font-semibold text-gray-900">
+        Username
+      </label>
+      <input
+        placeholder="user123"
+        type="text"
+        id="username"
+        class="border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      />
+    </div>
+
+    <!-- Email -->
+    <div class="mb-5">
+      <label for="email" class="block mb-2 text-sm font-semibold text-gray-900">
+        Email
+      </label>
+      <input
+        type="email"
+        id="email"
+        class="border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="user@example.com"
+        required
+      />
+    </div>
+
+    <!-- Phone Number -->
+    <div class="mb-5">
+      <label for="phone" class="block mb-2 text-sm font-semibold text-gray-900">
+        Phone number
+      </label>
+
+      <div class="flex items-center border border-gray-300 focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-blue-500 rounded-sm">
+        <button
+          id="country-code"
+          type="button"
+          class="flex items-center gap-2 px-3 py-2 text-sm bg-gray-50 border-r border-gray-300"
+        >
+          <img src="https://flagcdn.com/w20/eg.png" alt="Egypt flag" class="w-5 h-4 rounded-sm" />
+          <span class="text-gray-900 whitespace-nowrap">EG (+20)</span>
+          <div class="relative w-3 h-4 flex flex-col justify-center">
+            <i class="fa-solid cursor-pointer fa-chevron-up text-[10px] text-black absolute top-0"></i>
+            <i class="fa-solid cursor-pointer fa-chevron-down text-[10px] text-black absolute bottom-0"></i>
+          </div>
+        </button>
+
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="1012345678"
+          class="flex-1 w-full border-0 text-gray-900 text-sm p-2 focus:outline-none"
+          required
+        />
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="mb-5">
+      <label for="password" class="block mb-2 text-sm font-semibold text-gray-900">
+        Password
+      </label>
+      <input
+        placeholder="********"
+        type="password"
+        id="password"
+        class="border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        required
+      />
+    </div>
+
+    <!-- Confirm Password -->
+    <div class="mb-7">
+      <label for="repeat-password" class="block mb-2 text-sm font-semibold text-gray-900">
+        Confirm password
+      </label>
+      <input
+        placeholder="********"
+        type="password"
+        id="repeat-password"
+        class="border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        required
+      />
+    </div>
+
+    <!-- Button -->
+    <button
+      routerLink="/login"
+      type="submit"
+      class="cursor-pointer text-white w-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center"
+    >
+      Create Account
+    </button>
+
+    <!-- Login link -->
+    <div class="flex items-start">
+      <label class="text-sm py-7 mx-auto font-medium text-gray-900 text-center">
+        <p class="text-gray-500">
+          Already have an account?
+          <a routerLink="/login" class="text-blue-600 cursor-pointer">Login</a>
+        </p>
+      </label>
+    </div>
+  </form>
+</section>
