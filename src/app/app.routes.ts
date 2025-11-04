@@ -1,11 +1,13 @@
 import { Routes } from '@angular/router';
-import { Login } from './core/pages/login/login';
-import { Register } from './core/pages/register/register';
-import { ForgetPassword } from './core/pages/forget-password/forget-password';
+
 import { Auth } from './core/layouts/auth/auth';
 import { User } from './core/layouts/user/user';
-import { VerifyOtp } from './core/pages/verify-otp/verify-otp';
-import { CreateNewPassword } from './core/pages/create-new-password/create-new-password';
+import { Login } from './features/pages/login/login';
+import { Register } from './features/pages/register/register';
+import { ForgetPassword } from './features/pages/forget-password/forget-password';
+import { CreateNewPassword } from './features/pages/create-new-password/create-new-password';
+import { VerifyOtp } from './features/pages/verify-otp/verify-otp';
+
 
 export const routes: Routes = [
 
