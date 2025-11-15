@@ -1,0 +1,14 @@
+<button type="submit" [disabled]="isDisabled"
+  [ngClass]='{"bg-blue-700":!isDisabled,
+  "hover:bg-blue-800":!isDisabled,
+  "focus:ring-4":!isDisabled, 
+  "focus:outline-none":!isDisabled, 
+  "focus:ring-blue-300":!isDisabled,
+  "bg-gray-500":isDisabled,
+  
+  }'
+  class="w-full  justify-center relative text-white cursor-pointer  font-medium  text-sm px-5 py-2.5 text-center">
+
+
+  <ng-content></ng-content>
+</button>

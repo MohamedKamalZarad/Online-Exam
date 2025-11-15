@@ -1,138 +1,122 @@
 <section class="px-4 sm:px-6 lg:px-0">
-  <form class="max-w-md mt-10 mx-auto">
-    <h3 class="text-2xl sm:text-3xl font-inter font-bold text-gray-800 mb-7 text-center sm:text-left">
-      Create Account
-    </h3>
+  <form class="max-w-md mt-10 mx-auto" [formGroup]="registerForm" (ngSubmit)="register()">
 
-    <!-- First & Last Name -->
+    @let firstName = registerForm.get("firstName");
+    @let lastName = registerForm.get("lastName");
+    @let username = registerForm.get("username");
+    @let email = registerForm.get("email");
+    @let phone = registerForm.get("phone");
+    @let password = registerForm.get("password");
+    @let rePassword = registerForm.get("rePassword");
+
+    <h3 class="text-3xl font-bold text-gray-800 mb-7">Create Account</h3>
+
+
     <div class="mb-5 flex flex-col sm:flex-row sm:space-x-4">
+
+      <!-- First Name -->
       <div class="sm:w-1/2 w-full mb-4 sm:mb-0">
-        <label for="first-name" class="block mb-2 text-sm font-semibold text-gray-900">
-          First name
-        </label>
-        <input
-          type="text"
-          id="first-name"
+        <label class="block mb-2 text-sm font-semibold text-gray-900">First name</label>
+        <input formControlName="firstName" type="text"
+          [ngClass]="{'border-red-600': firstName?.invalid && firstName?.touched}"
           class="border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-          placeholder="Ahmed"
-        />
+          placeholder="Ahmed" />
+        <app-input-alert [control]="firstName" name="first name"></app-input-alert>
       </div>
+
+      <!-- Last Name -->
       <div class="sm:w-1/2 w-full">
-        <label for="last-name" class="block mb-2 text-sm font-semibold text-gray-900">
-          Last name
-        </label>
-        <input
-          type="text"
-          id="last-name"
+        <label class="block mb-2 text-sm font-semibold text-gray-900">Last name</label>
+        <input formControlName="lastName" type="text"
+          [ngClass]="{'border-red-600': lastName?.invalid && lastName?.touched}"
           class="border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-          placeholder="Abdullah"
-        />
+          placeholder="Abdullah" />
+        <app-input-alert [control]="lastName" name="last name"></app-input-alert>
       </div>
+
     </div>
 
-    <!-- Username -->
+
     <div class="mb-5">
-      <label for="username" class="block mb-2 text-sm font-semibold text-gray-900">
-        Username
-      </label>
-      <input
-        placeholder="user123"
-        type="text"
-        id="username"
+      <label class="block mb-2 text-sm font-semibold text-gray-900">Username</label>
+      <input formControlName="username" type="text"
+        [ngClass]="{'border-red-600': username?.invalid && username?.touched}"
         class="border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-      />
+        placeholder="user123" />
+      <app-input-alert [control]="username" name="username"></app-input-alert>
     </div>
 
-    <!-- Email -->
+
     <div class="mb-5">
-      <label for="email" class="block mb-2 text-sm font-semibold text-gray-900">
-        Email
-      </label>
-      <input
-        type="email"
-        id="email"
+      <label class="block mb-2 text-sm font-semibold text-gray-900">Email</label>
+      <input formControlName="email" type="email" [ngClass]="{'border-red-600': email?.invalid && email?.touched}"
         class="border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-        placeholder="user@example.com"
-        required
-      />
+        placeholder="user@example.com" />
+      <app-input-alert [control]="email" name="email"></app-input-alert>
     </div>
+
+
 
     <!-- Phone Number -->
+    <label for="phone" class="block mb-2 text-sm font-semibold text-gray-900"> Phone number
+    </label>
     <div class="mb-5">
-      <label for="phone" class="block mb-2 text-sm font-semibold text-gray-900">
-        Phone number
-      </label>
-
-      <div class="flex items-center border border-gray-300 focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-blue-500 rounded-sm">
-        <button
-          id="country-code"
-          type="button"
-          class="flex items-center gap-2 px-3 py-2 text-sm  "
-        >
-          <img src="https://flagcdn.com/w20/eg.png" alt="Egypt flag" class="w-5 h-4 rounded-sm" />
-          <span class="text-gray-900 whitespace-nowrap">EG (+20)</span>
-          <div class="relative w-3 h-4 flex flex-col justify-center">
-            <i class="fa-solid cursor-pointer fa-chevron-up text-[10px] text-black absolute top-0"></i>
-            <i class="fa-solid cursor-pointer fa-chevron-down text-[10px] text-black absolute bottom-0"></i>
-          </div>
-        </button>
-
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          placeholder="1012345678"
-          class="flex-1 w-full border-0 text-gray-900 text-sm p-2 focus:outline-none"
-          required
-        />
+      <div
+        class="flex items-center border border-gray-300 focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-blue-500 rounded-sm">
+        <button id="country-code" type="button" class="flex items-center gap-2 px-3 py-2 text-sm "> <img
+            src="https://flagcdn.com/w20/eg.png" alt="Egypt flag" class="w-5 h-4 rounded-sm" /> <span
+            class="text-gray-900 whitespace-nowrap">EG (+20)</span>
+          <div class="relative w-3 h-4 flex flex-col justify-center"> <i
+              class="fa-solid cursor-pointer fa-chevron-up text-[10px] text-black absolute top-0"></i> <i
+              class="fa-solid cursor-pointer fa-chevron-down text-[10px] text-black absolute bottom-0"></i> </div>
+        </button> <input [ngClass]="{'border-red-600': phone?.invalid && phone?.touched}" formControlName="phone"
+          type="tel" id="phone" name="phone" placeholder="1012345678"
+          class="flex-1 w-full border-0 text-gray-900 text-sm p-2 focus:outline-none" required />
       </div>
+      <app-input-alert [control]="phone" name="phone number"></app-input-alert>
     </div>
 
-    <!-- Password -->
     <div class="mb-5">
-      <label for="password" class="block mb-2 text-sm font-semibold text-gray-900">
-        Password
-      </label>
-      <input
-        placeholder="********"
-        type="password"
-        id="password"
+      <label class="block mb-2 text-sm font-semibold text-gray-900">Password</label>
+      <input formControlName="password" type="password"
+        [ngClass]="{'border-red-600': password?.invalid && password?.touched}"
         class="border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-        required
-      />
+        placeholder="********" />
+      <app-input-alert [control]="password" name="password"></app-input-alert>
     </div>
 
-    <!-- Confirm Password -->
+
     <div class="mb-7">
-      <label for="repeat-password" class="block mb-2 text-sm font-semibold text-gray-900">
-        Confirm password
-      </label>
-      <input
-        placeholder="********"
-        type="password"
-        id="repeat-password"
+      <label class="block mb-2 text-sm font-semibold text-gray-900">Confirm password</label>
+      <input formControlName="rePassword" type="password"
+        [ngClass]="{'border-red-600': rePassword?.invalid && rePassword?.touched}"
         class="border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-        required
-      />
+        placeholder="********" />
+      @if (password?.value!==rePassword?.value&&rePassword?.touched) {
+      <p class="error text-red-600">
+        Must match
+      </p>
+      }
     </div>
 
-    <!-- Button -->
-    <button
-      routerLink="/login"
-      type="submit"
-      class="cursor-pointer text-white w-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center"
-    >
-      Create Account
-    </button>
-
-    <!-- Login link -->
-    <div class="flex items-start">
-      <label class="text-sm py-7 mx-auto font-medium text-gray-900 text-center">
-        <p class="text-gray-500">
-          Already have an account?
-          <a routerLink="/login" class="text-blue-600 cursor-pointer">Login</a>
-        </p>
-      </label>
+    @if (
+    firstName?.invalid && firstName?.touched ||
+    lastName?.invalid && lastName?.touched ||
+    username?.invalid && username?.touched ||
+    email?.invalid && email?.touched ||
+    phone?.invalid && phone?.touched ||
+    password?.invalid && password?.touched ||
+    rePassword?.invalid && rePassword?.touched
+    ) {
+    <div class="mb-5">
+      <somethingwrong></somethingwrong>
     </div>
+    }
+
+    <app-auth-button [isDisabled]="registerForm.invalid">Create Account</app-auth-button>
+    <div class="flex items-start"> <label class="text-sm py-7 mx-auto font-medium text-gray-900 text-center">
+        <p class="text-gray-500"> Already have an account? <a routerLink="/login"
+            class="text-blue-600 cursor-pointer">Login</a> </p>
+      </label> </div>
   </form>
 </section>
