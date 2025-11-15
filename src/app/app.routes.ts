@@ -23,13 +23,7 @@ export const routes: Routes = [
    {
       path:"forget-password" ,component:ForgetPassword,title:"forget-password"
    },
-   {
-      path:"create-password" ,component:CreateNewPassword,title:"create-password"
-   },
-   {
-      path:"verify-password" ,component:VerifyOtp,title:"verify-password"
-   },
-    
+   
 
    
 ]
