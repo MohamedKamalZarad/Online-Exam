@@ -1,0 +1,77 @@
+<section class="px-4  md:mt-0 mt-5 sm:px-6 md:px-0">
+
+    <form class="max-w-md mx-auto" [formGroup]="VerifyOtpForm" (ngSubmit)="verifyOtp()">
+        <a (click)="steps.emit(0)" class=" border border-gray-300  hover:ring-blue-500  hover:border-blue-500 p-2"><i
+                class="fa-solid mb-10 fa-arrow-left"></i></a>
+        <h3 class=" text-3xl font-bold text-gray-800  font-inter">
+            Verify OTP
+        </h3>
+        <p class="text-gray-500 mt-2 md:whitespace-nowrap">Please enter the 6-digits code we have sent to:</p>
+        <div class="mb-5">
+            {{email}}<a class="text-blue-600 mx-4 cursor-pointer underline">Edit</a>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-4 mb-5 mx-auto">
+            <div>
+                <label for="code-1" class="sr-only">First code</label>
+                <input formControlName="digit1" 
+                 type="text" maxlength="1" data-focus-input-init data-focus-input-next="code-2" id="code-1"
+                    class="block w-9 h-9 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300  focus:ring-primary-500 focus:border-primary-500"
+                    required />
+            </div>
+            <div>
+                <label for="code-2" class="sr-only">Second code</label>
+                <input formControlName="digit2" 
+                 type=" text" maxlength="1" data-focus-input-init data-focus-input-prev="code-1"
+                    data-focus-input-next="code-3" id="code-2"
+                    class="block w-9 h-9 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300  focus:ring-primary-500 focus:border-primary-500"
+                    required />
+            </div>
+            <div>
+                <label for="code-3" class="sr-only">Third code</label>
+                <input formControlName="digit3" 
+                type=" text" maxlength="1" data-focus-input-init data-focus-input-prev="code-2"
+                    data-focus-input-next="code-4" id="code-3"
+                    class="block w-9 h-9 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300  focus:ring-primary-500 focus:border-primary-500"
+                    required />
+            </div>
+            <div>
+                <label for="code-4" class="sr-only">Fourth code</label>
+                <input formControlName="digit4" 
+                type=" text" maxlength="1" data-focus-input-init data-focus-input-prev="code-3"
+                    data-focus-input-next="code-5" id="code-4"
+                    class="block w-9 h-9 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300  focus:ring-primary-500 focus:border-primary-500"
+                    required />
+            </div>
+            <div>
+                <label for="code-5" class="sr-only">Fifth code</label>
+                <input formControlName="digit5" 
+                type=" text" maxlength="1" data-focus-input-init data-focus-input-prev="code-4"
+                    data-focus-input-next="code-6" id="code-5"
+                    class="block w-9 h-9 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300  focus:ring-primary-500 focus:border-primary-500"
+                    required />
+            </div>
+            <div>
+                <label for="code-6" class="sr-only">Sixth code</label>
+                <input formControlName="digit6" 
+                 type=" text" maxlength="1" data-focus-input-init data-focus-input-prev="code-5" id="code-6"
+                    class="block w-9 h-9 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300  focus:ring-primary-500 focus:border-primary-500"
+                    required />
+            </div>
+        </div>
+
+        <p id="helper-text-explanation" class="mt-2 mb-7 text-sm text-gray-500 text-center">
+            You can request another code in: 60s
+        </p>
+
+        <app-auth-button [isDisabled]="VerifyOtpForm.invalid">Verify</app-auth-button>
+
+        <div class="flex items-start mb-5">
+            <label for="" class="text-sm py-7 mx-auto font-medium text-gray-900">
+                <p class=" text-gray-500">Don’t have an account?
+                    <a routerLink="/register" class="text-blue-600 cursor-pointer">Create yours</a>
+                </p>
+            </label>
+        </div>
+    </form>
+</section>
