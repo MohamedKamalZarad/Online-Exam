@@ -1,0 +1,28 @@
+<div class="mb-2">
+    <app-header-holder>
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span class="ms-3">Diplomas</span>
+    </app-header-holder>
+
+</div>
+<div class="grid grid-cols-12 gap-1 mb-5 ">
+    @for (subject of subjects; track subject._id)
+ {
+<div class="col-span-4 ">
+
+        <figure class="relative h-[220px] mx-auto cursor-pointer  rounded-none overflow-hidden flex justify-center">
+            <img class="w-full rounded-none object-fill" [src]="subject.icon" alt="" srcset="">
+            <div class="layer-text left-0 right-0 p-3 bottom-0  text-white z-auto    absolute">
+                <h4 class="bg-[#155DFC80]/50 p-5">
+                    {{subject.name}}
+                </h4>
+            </div>
+        </figure>
+
+</div>
+}
+</div>
+<div class="text-[#4B5563] text-center">
+    <p>Scroll to view more</p>
+    <i (click)="navigate()" class="fa-solid fa-chevron-down text-xs cursor-pointer"></i>
+</div>

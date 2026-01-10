@@ -6,7 +6,15 @@
     "paths": {
       "auth": [
         "./dist/auth",
-        "./dist/auth"
+      ],
+      "exam": [
+        "./dist/exam"
+      ],
+      "quiz": [
+        "./dist/quiz"
+      ],
+      "subjects": [
+        "./dist/subjects"
       ]
     },
     "strict": true,
@@ -47,6 +55,24 @@
     },
     {
       "path": "./projects/auth/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/exam/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/exam/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/subjects/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/subjects/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/quiz/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/quiz/tsconfig.spec.json"
     }
   ]
 }

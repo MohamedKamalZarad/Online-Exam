@@ -1,0 +1,49 @@
+<!-- Header -->
+<div class="flex flex-col sm:flex-row items-center mb-4">
+  <div routerLink="/home" class="py-3.5 px-2.5 cursor-pointer text-[#155DFC] border bg-white mb-2 sm:mb-0">
+    <i class="fa-solid fa-chevron-left text-xs text-[#155DFC]"></i>
+  </div>
+  <div class="w-full sm:ms-2">
+    <app-header-holder><i class="fa-regular fa-user"></i> Account Settings</app-header-holder>
+  </div>
+</div>
+
+<!-- Section: Sidebar + Main Content -->
+<div class="section relative bg-[#f9fafb] z-30 w-full min-h-screen">
+  <div class="grid grid-cols-12 gap-3 h-full">
+
+    <!-- Sidebar -->
+    <div class="col-span-12 sm:col-span-3 p-5 bg-white h-auto sm:h-full flex flex-col justify-between row-span-10">
+      <ul class="flex flex-col justify-between font-medium h-full">
+        <div>
+          <li class="mb-5">
+            <a routerLink="/account-settings/profile"
+               routerLinkActive="text-[#155DFC] bg-[#2B7FFF]/10 border-[#155DFC]/50!"
+               class="cursor-pointer flex items-center px-2 py-1.5 text-sm text-[#6B7280] rounded-base transition hover:bg-[#2B7FFF]/10">
+              <i class="fa-solid fa-user"></i>
+              <span class="ms-3">Profile</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/account-settings/change-password"
+               routerLinkActive="text-[#155DFC] bg-[#2B7FFF]/10 border-[#155DFC]/50!"
+               class="cursor-pointer flex items-center px-2 py-1.5 text-sm text-[#6B7280] rounded-base transition hover:bg-[#2B7FFF]/10">
+              <i class="fa-solid fa-lock"></i>
+              <span class="ms-3">Change Password</span>
+            </a>
+          </li>
+        </div>
+
+        <div class="bg-[#FEF2F2] px-2 py-1.5 mt-5 sm:mt-0">
+          <app-log-out></app-log-out>
+        </div>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-span-12 sm:col-span-9 row-span-10 bg-white p-3 sm:p-5 h-auto sm:h-full">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

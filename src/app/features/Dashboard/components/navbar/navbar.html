@@ -1,0 +1,17 @@
+
+
+<nav class="flex bg-white p-3" aria-label="Breadcrumb">
+  <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+    <li [class.text-[#9CA3AF]]=currentPath [class.text-[#155DFC]]=!currentPath class="inline-flex items-center ">
+      <a href="#" class="inline-flex items-center text-sm font-medium text-body hover:text-fg-brand">
+        Home
+      </a>
+    </li>
+  @if(currentPath){
+    <span class="mx-2 text-[#9CA3AF]">/</span>
+    <span class="text-sm text-[#155DFC] font-medium">
+      {{ currentPath }}
+    </span>
+  }
+  </ol>
+</nav>

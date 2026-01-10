@@ -1,0 +1,25 @@
+<div class="flex items-center mb-4 ">
+    <div (click)="navigate()" class="py-3.5 px-2.5 cursor-pointer text-[#155DFC] border bg-white">
+
+        <i  class="fa-solid fa-chevron-left text-xs text-[#155DFC]"></i>
+    </div>
+    <div class="w-full ms-2">
+        <app-header-holder><i class="fa-solid ms-3 fa-book-open"></i> Exams</app-header-holder>
+    </div>
+</div>
+<section class="bg-white p-5 h-screen">
+    <ul >
+        @for (exam of exams; track exam._id) {
+        <li (click)="navigateToQuiz(exam._id)" class="bg-[#EFF6FF] cursor-pointer mb-5 px-3 py-2 flex justify-between items-center">
+            <h3>
+               <h5 class="text-[#155DFC]  font-bold">{{exam.title}}</h5> 
+               <h5 class="text-[#6B7280] text-sm">{{exam.numberOfQuestions}} Questions</h5> 
+            </h3> 
+            <p class="text-[#1F2937] text-sm">
+               <i class="fa-solid fa-alarm-clock  text-[#6B7280]"></i> Duration: {{exam.duration}} minutes
+            </p>
+        </li>
+        }
+    </ul>
+    <p class="text-center text-[#6B7280]">End of list</p>
+</section>

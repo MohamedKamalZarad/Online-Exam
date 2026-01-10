@@ -20,20 +20,23 @@ export class AuthService implements AuthAPI {
   }
   changePassword(data: any): Observable<any> {
     return this.httpClient.patch(AuthEndPoint.CHANEPASSWORD, data)
-      .pipe(map(res => this.authAdaptation.adapt(res)), catchError(err => of(err)))
 
   }
-  deleteMyaccount(data: any): Observable<any> {
+  deleteMyaccount(): Observable<any> {
     return this.httpClient.delete(AuthEndPoint.DELETEMYACCOUNT)
-      .pipe(map(res => this.authAdaptation.adapt(res)), catchError(err => of(err)))
+     
   }
-  getLoggedUserInfo(data: any): Observable<any> {
+  getLoggedUserInfo(): Observable<any> {
     return this.httpClient.get(AuthEndPoint.GETLOGGEDUSERINFO)
-      .pipe(map(res => this.authAdaptation.adapt(res)), catchError(err => of(err)))
+      
   }
  editProfile(data: any): Observable<any> {
-    return this.httpClient.put(AuthEndPoint.EDITPROFILE,data)
-    .pipe(map(res => this.authAdaptation.adapt(res)), catchError(err => of(err)))
+    return this.httpClient.put(AuthEndPoint.EDITPROFILE,data,{
+      headers:{
+        token:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NGQzYTVjY2ViMmM1OWY4NGEyOTc1MCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzY2NjY4OTU2fQ.VfmTF4LuXlbpqAGRyDPruLPpY54TI3-Mrun0uErA7iE'
+      }
+    })
+    
   }
  logOut(data: any): Observable<any> {
     return this.httpClient.get(AuthEndPoint.LOGOUT)
@@ -48,7 +51,7 @@ export class AuthService implements AuthAPI {
       .pipe(map(res => this.authAdaptation.adapt(res)), catchError(err => of(err)))
   }
   resetPassword(data: any): Observable<any> {
-    return this.httpClient.put(AuthEndPoint.VERIFYRESETCODE, data)
+    return this.httpClient.put(AuthEndPoint.RESETPASSWORD, data)
       .pipe(map(res => this.authAdaptation.adapt(res)), catchError(err => of(err)))
   }
 }

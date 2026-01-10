@@ -1,0 +1,195 @@
+<div>
+  @if(questions)
+  {
+  <div class="flex items-center mb-5 ">
+    <div  routerLink="/exams"class="py-3.5 px-2.5 cursor-pointer text-[#155DFC] border bg-white">
+
+      <i class="fa-solid fa-chevron-left text-xs text-[#155DFC]"></i>
+    </div>
+    <div class="w-full ms-2">
+      <app-header-holder>
+        <i class="fa-solid fa-circle-question"></i><span class="ms-1 font-medium">[{{questions[0].exam?.title}}]
+          Questions</span>
+      </app-header-holder>
+    </div>
+  </div>
+
+  <section class="bg-white p-5">
+    <div class="flex justify-between mb-2 text-sm text-[#6B7280]">
+      <p>Frontend Development - {{questions[0].exam?.title}}</p>
+      <p>Question <span class="text-[#155DFC] font-semibold"></span>{{currentIndex+1}} of {{questions.length}}</p>
+    </div>
+
+    <div class="w-full bg-white rounded-full h-2 mb-8">
+      <div [style.width.%]="((currentIndex+1)/questions.length) *100" class="bg-[#155DFC] duration-100 h-3 "></div>
+    </div>
+    @if(steps===1)
+    {@for(question of questions ; track question._id){
+
+    @if(currentIndex===questions.indexOf(question))
+    {<p class="text-[#155DFC] text-lg font-semibold mb-4">{{question.question}}</p>
+
+    @for (answer of question.answers ;track answer.key ){
+    <ul class="mb-7">
+
+      <div class="flex items-center p-3 mb-2 bg-[#F3F4F6]">
+<!-- [checked]="question._id===ansewrs.answers[questions.indexOf(question)].questionId" -->
+ @if(ansewrs.answers[questions.indexOf(question)]?.questionId)
+     {  <input type="radio" [checked]="answer.key===ansewrs.answers[questions.indexOf(question)].correct"   class="outline-none cursor-pointer" [id]="answer.key" [name]="question._id"
+          (change)="onSelectAnswer(question._id, answer.key)">}
+@else{
+  <input type="radio"    class="outline-none cursor-pointer" [id]="answer.key" [name]="question._id"
+          (change)="onSelectAnswer(question._id, answer.key)">
+}
+        <label class="ms-2 cursor-pointer" [for]="answer.key">{{answer.answer}}</label>
+
+      </div>
+    </ul>}}
+
+    }}
+    @else if (steps === 2)
+    {
+      <p class="text-[#155DFC] text-2xl font-semibold mb-7">Resaults:</p>
+      <div class="flex justify-between mb-6">
+
+        <div class="w-48 flex flex-col  items-center">
+    @if (wrongQuestions) {
+          <canvas
+      baseChart
+      [data]="doughnutData"
+      [type]="'doughnut'"
+      [options]="doughnutOptions">
+    </canvas>
+  <div class="flex flex-col mt-4 gap-2 text-sm">
+  
+    <div class="flex items-center gap-2">
+      <span class="w-3 h-3  bg-[#00BC7D]"></span>
+      <span class="text-gray-700">Correct: {{ numOFCorrectAnswers }}</span>
+    </div>
+  
+    <div class="flex items-center gap-2">
+      <span class="w-3 h-3  bg-[#EF4444]"></span>
+      <span class="text-gray-700">Incorrect: {{ numOFInCorrectAnswers }}</span>
+    </div>
+  
+  </div>
+  
+  }
+  </div>
+  <div class="w-full ms-5 border border-[#F3F4F6]">
+          @for (question of questions; track $index)
+      {
+      @if (isWrong(question._id))
+      {
+      <div class="mb-6 p-4 w-full ">
+  
+        <p class="text-[#155DFC] text-lg font-semibold mb-3">
+          {{ question.question }}
+        </p>
+  
+        <p class="mb-2 bg-[#FEF2F2] p-4">
+          <input type="radio" class="text-[#DC2626]" disabled checked name="" id="">
+          <label class="text-[#1F2937]" for=""> {{ getAnswerText(question, getUserAnswerKey(question._id)) }}</label>
+  
+        </p>
+        <p class="mb-2 bg-[#ECFDF5] p-4">
+          <input type="radio" disabled class="" name="" id="">
+          <label class="" for=""> {{ getAnswerText(question, question.correct) }}</label>
+  
+        </p>
+  
+      </div>
+      }
+      }
+  </div>
+
+    </div>
+  }
+
+
+
+@if(steps===1)
+   { <div class="flex justify-between">
+      
+      <button type="button" (click)="prev()" [disabled]="currentIndex === 0" [class.bg-[#155DFC]]="currentIndex > 0"
+        [class.text-white]="currentIndex > 0" [class.bg-[#E5E7EB]]="currentIndex === 0"
+        [class.text-[#9CA3AF]]="currentIndex === 0" class="cursor-pointer box-border border border-transparent w-full
+         hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium
+         shadow-xs font-medium leading-5 rounded-base text-sm
+         px-4 py-2.5 focus:outline-none">
+        <i class="fa-solid fa-chevron-left text-sm"></i>
+        Previous
+      </button>
+
+
+
+      <div class="mx-5">
+
+        <div class="w-16 h-16 relative flex items-center justify-center">
+
+          <span class="absolute text-sm font-semibold text-blue-600">
+{{ remainingTime | duration }}
+
+
+          </span>
+
+          <svg class="w-full h-full rotate-[-90deg]" viewBox="0 0 36 36">
+      
+            <circle stroke="#E5E7EB" stroke-width="4" fill="transparent" r="16" cx="18" cy="18" />
+
+          
+<circle
+  stroke="#155DFC"
+  stroke-width="4"
+  fill="transparent"
+  r="16"
+  cx="18"
+  cy="18"
+  stroke-linecap="round"
+  stroke-dasharray="100"
+  [attr.stroke-dashoffset]="100 - timeProgress"
+/>
+
+          </svg>
+        </div>
+      </div>
+
+      <!-- [attr.stroke-dashoffset]="100 - timeProgress" -->
+
+      <button type="button" (click)="onSubmit()" [disabled]="!hasAnswerForCurrent()"
+        [class.bg-[#155DFC]]="currentIndex < questions.length - 1"
+        [class.text-white]="currentIndex < questions.length - 1" class="cursor-pointer box-border border border-transparent w-full
+         hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium
+         shadow-xs font-medium leading-5 rounded-base text-sm
+         px-4 py-2.5 focus:outline-none">
+        {{currentIndex+1 === questions.length ? 'submit' :'next'}}
+        <i class="fa-solid fa-chevron-right text-sm"></i>
+      </button>
+
+    </div>}
+    @if(steps===2)
+ {   <div class="flex justify-between">
+
+      <button type="button" (click)="restart()"  class="cursor-pointer bg-gray-200 box-border border border-transparent w-full
+         hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium
+         shadow-xs font-medium leading-5 rounded-base text-sm
+         px-4 py-2.5 focus:outline-none">
+         <i class="fa-solid fa-rotate-left text-sm"></i>
+    
+       Restart
+      </button>
+      <button type="button" routerLink="/exams" [disabled]="!hasAnswerForCurrent()"
+      class="cursor-pointer ms-3 bg-[#155DFC] text-white box-border border border-transparent w-full
+         hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium
+         shadow-xs font-medium leading-5 rounded-base text-sm
+         px-4 py-2.5 focus:outline-none">
+         <i class="fa-solid fa-folder text-sm"></i>
+        Explore
+      </button>
+
+    </div>}
+  </section>
+
+
+  }
+</div>

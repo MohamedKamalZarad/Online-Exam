@@ -127,6 +127,96 @@
           }
         }
       }
+    },
+    "exam": {
+      "projectType": "library",
+      "root": "projects/exam",
+      "sourceRoot": "projects/exam/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/exam/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/exam/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/exam/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "subjects": {
+      "projectType": "library",
+      "root": "projects/subjects",
+      "sourceRoot": "projects/subjects/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/subjects/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/subjects/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/subjects/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "quiz": {
+      "projectType": "library",
+      "root": "projects/quiz",
+      "sourceRoot": "projects/quiz/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/quiz/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/quiz/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/quiz/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
     }
 
   }

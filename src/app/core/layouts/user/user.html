@@ -1,1 +1,101 @@
-<p>user works!</p>
+<button
+  (click)="toggleSidebar()"
+  class="sm:hidden fixed top-3 left-3 z-50 p-2 bg-white rounded-md shadow">
+  <i class="fa-solid fa-bars text-xl"></i>
+</button>
+
+<div
+  *ngIf="sidebarOpen"
+  (click)="toggleSidebar()"
+  class="fixed inset-0 bg-black/40 z-30 sm:hidden">
+</div>
+
+<div class="">
+  <aside
+    class="fixed top-0 left-0 p-3 z-40 w-64 h-full bg-[#EFF6FF] transition-transform duration-300
+           -translate-x-full sm:translate-x-0"
+    [class.translate-x-0]="sidebarOpen"
+    [class.-translate-x-full]="!sidebarOpen"
+    aria-label="Sidebar">
+
+    <div class="h-full px-2 flex flex-col justify-between py-4 overflow-y-auto">
+      <div>
+        <div class="headers mb-7">
+          <figure>
+            <img class="w-36" src="/assets/Dashboard/logo.png" alt="logo">
+          </figure>
+          <h2>
+            <img class="w-24" src="/assets/auth/Logo.png" alt="logo">
+          </h2>
+        </div>
+
+        <ul class="space-y-2 font-medium">
+          <li>
+            <a routerLink="/home"
+               routerLinkActive="text-[#155DFC] bg-[#2B7FFF]/10 border-[#155DFC]/50!"
+               class="flex items-center text-sm py-2 px-2.5 border border-transparent text-[#6B7280] rounded-base hover:bg-neutral-tertiary">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <span class="ms-3">Diplomas</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/account-settings"
+               routerLinkActive="text-[#155DFC] bg-[#2B7FFF]/10 border-[#155DFC]/50!"
+               class="flex items-center text-sm py-2 px-2.5 border border-transparent text-[#6B7280] rounded-base hover:bg-neutral-tertiary">
+              <i class="fa-regular fa-user"></i>
+              <span class="ms-3">Account Settings</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <a routerLinkActive="hover:text-[#2B7FFF]"
+           class="flex items-center text-sm py-1.5 text-[#6B7280] rounded-base cursor-pointer hover:bg-neutral-tertiary group">
+
+          <img class="w-8 h-10" src="/assets/Dashboard/user.jpg" alt="">
+          <div class="flex-col justify-between">
+            <h5 class="ms-3 text-sm text-[#155DFC]">{{userInfo.firstName}}</h5>
+            <h5 class="ms-3 text-xs">{{userInfo.email}}</h5>
+          </div>
+
+          <button id="dropdownMenuIconButton"
+                  data-dropdown-toggle="dropdownDots"
+                  class="text-heading bg-neutral-primary box-border border border-transparent hover:bg-neutral-secondary-medium font-medium leading-5 rounded-base text-sm cursor-pointer"
+                  type="button">
+            <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-width="3"
+                    d="M12 6h.01M12 12h.01M12 18h.01"/>
+            </svg>
+          </button>
+
+          <!-- Dropdown -->
+          <div id="dropdownDots" class="z-10 hidden bg-white rounded-base shadow-lg w-44">
+            <ul class="text-sm text-body font-medium">
+              <li class="border-b border-[#F3F4F6] py-2">
+                <a routerLink="/account-settings/profile"
+                   class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
+                  <i class="fa-regular fa-user"></i>
+                  <span class="ms-2">Account</span>
+                </a>
+              </li>
+              <li class="ps-1 py-2">
+                <app-log-out></app-log-out>
+              </li>
+            </ul>
+          </div>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="sm:ml-64 bg-[#F9FAFB] transition-all">
+    <navbar></navbar>
+
+    <div class="px-3">
+      <div class="p-3 border-default border-dashed rounded-base">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
